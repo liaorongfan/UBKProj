@@ -4,15 +4,18 @@ from .build import NETWORK_REGISTRY
 
 
 class MLP(nn.Module):
-    def __init__(self, num_cls=5):
+    def __init__(self,input_dim=194, output_dim=2):
         super().__init__()
-        self.inp_layer = nn.Linear(245, 256)
-        self.out_layer = nn.Linear(256, 5)
+        self.inp_layer = nn.Linear(input_dim, 256)
+        self.mid_layer = nn.Linear(256, 512)
+        self.mid_relu = nn.ReLU()
+        self.out_layer = nn.Linear(512, output_dim)
         self.relu = nn.ReLU()
 
     def forward(self, x):
         x = self.inp_layer(x)
         x = self.relu(x)
+        x = self.mid_relu(self.mid_layer(x))
         x = self.out_layer(x)
         return x
 

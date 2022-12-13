@@ -10,11 +10,11 @@ DATA_LOADER:
 MODEL:
   NAME: "mlp_model"
 LOSS:
-  NAME: "mean_square_error"
+  NAME: "cross_entropy_loss"
 SOLVER:
   NAME: "sgd"
   SCHEDULER: "multi_step_scale"
-  LR_INIT: 0.05
+  LR_INIT: 0.001
   WEIGHT_DECAY: 0.0005
   MOMENTUM: 0.9
   MILESTONE: [80, 90]

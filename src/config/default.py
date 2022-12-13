@@ -85,7 +85,7 @@ _C.TRAIN.START_EPOCH = 0
 _C.TRAIN.MAX_EPOCH = 300
 _C.TRAIN.PRE_TRAINED_MODEL = None
 _C.TRAIN.RESUME = ""
-_C.TRAIN.LOG_INTERVAL = 10
+_C.TRAIN.LOG_INTERVAL = 1
 _C.TRAIN.VALID_INTERVAL = 1
 _C.TRAIN.OUTPUT_DIR = "results"
 # ------------------------------------------- step 7:  test config node ------------------------------------------------

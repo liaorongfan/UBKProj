@@ -121,7 +121,10 @@ class ExpRunner(Constructor):
             self.model = load_model(self.model, cfg.WEIGHT)
         else:
             try:
-                weights = [file for file in os.listdir(self.log_dir) if file.endswith(".pkl") and ("last" not in file)]
+                weights = [
+                    file for file in os.listdir(self.log_dir)
+                    if file.endswith(".pkl") and ("last" not in file)
+                ]
                 weights = sorted(weights, key=lambda x: int(x[11:-4]))
                 weight_file = os.path.join(self.log_dir, weights[-1])
             except IndexError:
@@ -129,10 +132,9 @@ class ExpRunner(Constructor):
             self.logger.info(f"test with model {weight_file}")
             self.model = load_model(self.model, weight_file)
 
-        acc_avg,  mse = self.trainer.test(
+        acc_avg = self.trainer.test(
             self.data_loader["test"], self.model
         )
-        self.logger.info("mse: {}".format(mse))
         self.logger.info("acc: {}".format(acc_avg))
         return
 
