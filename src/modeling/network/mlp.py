@@ -4,7 +4,7 @@ from .build import NETWORK_REGISTRY
 
 
 class MLP(nn.Module):
-    def __init__(self,input_dim=194, output_dim=2):
+    def __init__(self,input_dim=194, output_dim=3):
         super().__init__()
         self.inp_layer = nn.Linear(input_dim, 256)
         self.mid_layer = nn.Linear(256, 512)
