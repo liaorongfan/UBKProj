@@ -5,8 +5,8 @@ DATA:
 DATA_LOADER:
   NAME: "ubk_dataloader"
 #  TRANSFORM: "standard_frame_transform"
-  TRAIN_BATCH_SIZE: 32
-  NUM_WORKERS: 0
+  TRAIN_BATCH_SIZE: 512
+  NUM_WORKERS: 4
 MODEL:
   NAME: "mlp_model"
 LOSS:
@@ -20,5 +20,5 @@ SOLVER:
   MILESTONE: [80, 90]
 TRAIN:
   TRAINER: "SimpleTrainer"
-  MAX_EPOCH: 10
+  MAX_EPOCH: 100
   OUTPUT_DIR: "results/mlp/"
