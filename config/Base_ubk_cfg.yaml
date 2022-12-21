@@ -1,0 +1,18 @@
+DATA:
+  TRAIN_IMG_DATA: "image_data/train_data"
+  VALID_IMG_DATA: "image_data/valid_data"
+  TEST_IMG_DATA: "image_data/test_data"
+DATA_LOADER:
+  NAME: "ubk_dataloader"
+  TRAIN_BATCH_SIZE: 512
+  NUM_WORKERS: 4
+LOSS:
+  NAME: "cross_entropy_loss"
+SOLVER:
+  NAME: "sgd"
+  SCHEDULER: "multi_step_scale"
+  LR_INIT: 0.001
+  WEIGHT_DECAY: 0.0005
+  MOMENTUM: 0.9
+  MILESTONE: [80, 90]
+

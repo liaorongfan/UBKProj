@@ -1,23 +1,8 @@
-DATA:
-  TRAIN_IMG_DATA: "image_data/train_data"
-  VALID_IMG_DATA: "image_data/valid_data"
-  TEST_IMG_DATA: "image_data/test_data"
-DATA_LOADER:
-  NAME: "ubk_dataloader"
-#  TRANSFORM: "standard_frame_transform"
-  TRAIN_BATCH_SIZE: 512
-  NUM_WORKERS: 4
+_BASE_: "./Base_ubk_cfg.yaml"
 MODEL:
   NAME: "mlp_model"
-LOSS:
-  NAME: "cross_entropy_loss"
 SOLVER:
-  NAME: "sgd"
-  SCHEDULER: "multi_step_scale"
   LR_INIT: 0.001
-  WEIGHT_DECAY: 0.0005
-  MOMENTUM: 0.9
-  MILESTONE: [80, 90]
 TRAIN:
   TRAINER: "SimpleTrainer"
   MAX_EPOCH: 100

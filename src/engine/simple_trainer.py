@@ -2,6 +2,7 @@ import torch
 from tqdm import tqdm
 import numpy as np
 from .build import TRAINER_REGISTRY
+from .build import device
 from torch.utils.tensorboard import SummaryWriter
 import time
 
@@ -26,7 +27,8 @@ class SimpleTrainer(Trainer):
         self.clt = collector
         self.logger = logger
         self.tb_writer = SummaryWriter(cfg.OUTPUT_DIR)
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device
+        # torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     def train(self, data_loader, model, loss_func, optimizer, epoch_idx):
         lr = optimizer.param_groups[0]['lr']
@@ -124,3 +126,12 @@ class SimpleTrainer(Trainer):
         return (data_in,), labels
 
 
+@TRAINER_REGISTRY.register()
+class ConvTrainer(SimpleTrainer):
+
+    def data_fmt(self, data):
+        for k, v in data.items():
+            data[k] = v.to(self.device)
+        data_in, labels = data["data"], data["label"]
+        data_in = data_in.reshape((-1, 1, 1, 194))
+        return (data_in,), labels

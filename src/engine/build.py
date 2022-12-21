@@ -1,4 +1,7 @@
+import torch
 from src.config.registry import Registry
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 TRAINER_REGISTRY = Registry("TRAINER")
 
