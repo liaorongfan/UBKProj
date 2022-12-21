@@ -94,6 +94,8 @@ class ExpRunner(Constructor):
             if self.collector.model_save and epoch % cfg.VALID_INTERVAL == 0:
                 save_model(epoch, self.collector.best_valid_acc, self.model, self.optimizer, self.log_dir, cfg)
                 self.collector.update_best_epoch(epoch)
+            if self.cfg.TRAIN.SAVE_LAST and epoch == (cfg.MAX_EPOCH - 1):
+                save_model(epoch, self.collector.best_valid_acc, self.model, self.optimizer, self.log_dir, cfg)
 
     def after_train(self, cfg):
         # cfg = self.cfg.TRAIN

@@ -87,6 +87,7 @@ _C.TRAIN.PRE_TRAINED_MODEL = None
 _C.TRAIN.RESUME = ""
 _C.TRAIN.LOG_INTERVAL = 1
 _C.TRAIN.VALID_INTERVAL = 1
+_C.TRAIN.SAVE_LAST = False
 _C.TRAIN.OUTPUT_DIR = "results"
 # ------------------------------------------- step 7:  test config node ------------------------------------------------
 _C.TEST = CfgNode()
