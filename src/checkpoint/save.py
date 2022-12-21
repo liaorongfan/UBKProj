@@ -1,7 +1,6 @@
 import os
 import torch
 
-
 def save_model(epoch, best_acc, model, optimizer, output_dir, cfg):
     if isinstance(optimizer, list):
         optimizer = optimizer[1]  # for cr net

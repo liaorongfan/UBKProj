@@ -5,7 +5,7 @@ DATA:
 DATA_LOADER:
   NAME: "ubk_dataloader"
   TRAIN_BATCH_SIZE: 512
-  NUM_WORKERS: 6
+  NUM_WORKERS: 0
 LOSS:
   NAME: "cross_entropy_loss"
 SOLVER:

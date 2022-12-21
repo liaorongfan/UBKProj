@@ -1,8 +1,6 @@
 
 
 class Base:
-    def __init__(self):
-        self.model = None
 
     def before_train(self, *args, **kwargs):
         pass
@@ -24,21 +22,23 @@ class Base:
 
 
 class Hooks:
+    def __init__(self, cfg):
+        self.cfg = cfg
 
-    def before_train(self, ):
+    def before_train(self, *args, **kwargs):
         pass
 
-    def after_train(self):
+    def after_train(self, *args, **kwargs):
         pass
 
-    def before_epoch(self):
+    def before_epoch(self, *args, **kwargs):
         pass
 
-    def after_epoch(self):
+    def after_epoch(self, *args, **kwargs):
         pass
 
-    def before_batch(self):
+    def before_batch(self, *args, **kwargs):
         pass
 
-    def after_batch(self):
+    def after_batch(self, *args, **kwargs):
         pass

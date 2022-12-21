@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from src.tools.common import parse_args, default_setup
 from src.config.config import get_cfg
-from src.engine.exp_runner import ExpRunner
+from src.engine.trainer import TemplateTrainer
 
 
 def setup(args):
@@ -16,7 +16,7 @@ def setup(args):
 def main():
     args = parse_args()
     cfg = setup(args)
-    runner = ExpRunner(cfg)
+    runner = TemplateTrainer(cfg)
     if args.test_only:
         return runner.test()
     runner.run()
