@@ -135,3 +135,17 @@ class ConvTrainer(SimpleTrainer):
         data_in, labels = data["data"], data["label"]
         data_in = data_in.reshape((-1, 1, 1, 194))
         return (data_in,), labels
+
+
+@TRAINER_REGISTRY.register()
+class TransformerTrainer(SimpleTrainer):
+
+    def data_fmt(self, data):
+        for k, v in data.items():
+            data[k] = v.to(self.device)
+        data_in, labels = data["data"], data["label"]
+        bs, dim = data_in.shape
+        tmp = torch.zeros(bs, 200).to(self.device)
+        tmp[:, :194] = data_in
+        data_in = tmp.reshape(bs, 1, 200)
+        return (data_in,), labels

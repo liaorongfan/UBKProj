@@ -54,9 +54,3 @@ def alexnet_1d(cfg=None, **kwargs):
     model = AlexNet1D(num_classes=3, **kwargs)
     return model.to(device)
 
-
-if __name__ == '__main__':
-    m = nn.Conv1d(1, 4, 3, stride=1, padding=1)
-    input = torch.randn(20, 1, 50)
-    output = m(input)
-    print(output.shape)
