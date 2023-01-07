@@ -15,28 +15,13 @@ step 7 : set test metric
 # ------------------------------------------- step 1 : dataset config node ---------------------------------------------
 _C.DATA = CfgNode()
 _C.DATA.ROOT = "datasets"
-_C.DATA.TYPE = "frame"
-_C.DATA.SESSION = "talk"
 
-_C.DATA.TRAIN_IMG_DATA = "image_data/train_data"
-_C.DATA.TRAIN_IMG_FACE_DATA = "image_data/train_data_face"
-_C.DATA.TRAIN_AUD_DATA = "raw_voice/trainingData"
-_C.DATA.TRAIN_LABEL_DATA = "annotation/annotation_training.pkl"
+_C.DATA.TRAIN_DATA = "./dataset/ukb_array_train.npy"
 
-_C.DATA.VALID_IMG_DATA = "image_data/valid_data"
-_C.DATA.VALID_IMG_FACE_DATA = "image_data/valid_data_face"
-_C.DATA.VALID_AUD_DATA = "raw_voice/validationData"
-_C.DATA.VALID_LABEL_DATA = "annotation/annotation_validation.pkl"
+_C.DATA.VALID_DATA = "./dataset/ukb_array_valid.npy"
 
-_C.DATA.TEST_IMG_DATA = "image_data/test_data"
-_C.DATA.TEST_IMG_FACE_DATA = "image_data/test_data_face"
-_C.DATA.TEST_AUD_DATA = "raw_voice/testData"
-_C.DATA.TEST_LABEL_DATA = "annotation/annotation_test.pkl"
+_C.DATA.TEST_DATA = "./dataset/ukb_array_test.npy"
 
-_C.DATA.VA_ROOT = "datasets"
-_C.DATA.VA_DATA = "va_data/cropped_aligned"
-_C.DATA.VA_TRAIN_LABEL = "va_data/va_label/VA_Set/Train_Set"
-_C.DATA.VA_VALID_LABEL = "va_data/va_label/VA_Set/Validation_Set"
 # ------------------------------------------ step 2 : dataloader config node -------------------------------------------
 _C.DATA_LOADER = CfgNode()
 # name of dataloader build function

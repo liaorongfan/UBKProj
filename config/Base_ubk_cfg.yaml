@@ -1,7 +1,3 @@
-DATA:
-  TRAIN_IMG_DATA: "image_data/train_data"
-  VALID_IMG_DATA: "image_data/valid_data"
-  TEST_IMG_DATA: "image_data/test_data"
 DATA_LOADER:
   NAME: "ubk_dataloader"
   TRAIN_BATCH_SIZE: 512

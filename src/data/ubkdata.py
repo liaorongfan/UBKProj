@@ -6,13 +6,13 @@ from .build import DATA_LOADER_REGISTRY
 
 class UBKData(Dataset):
 
-    def __init__(self, mode):
+    def __init__(self, cfg, mode):
         if mode == "train":
-            data = np.load("/home/rongfan/18-UBK/UBKProj/dataset/ukb_array_train.npy")
+            data = np.load(cfg.DATA.TRAIN_DATA)
         if mode == "valid":
-            data = np.load("/home/rongfan/18-UBK/UBKProj/dataset/ukb_array_valid.npy")
+            data = np.load(cfg.DATA.VALID_DATA)
         if mode == "test":
-            data = np.load("/home/rongfan/18-UBK/UBKProj/dataset/ukb_array_test.npy")
+            data = np.load(cfg.DATA.TEST_DATA)
         # self.data = data[:2000]
         self.data = data
         self.data = torch.as_tensor(self.data, dtype=torch.float32)
@@ -39,12 +39,12 @@ def ubk_dataloader(cfg, mode="train"):
 
     sampler = None
     if mode == "train":
-        dataset = UBKData(mode)
+        dataset = UBKData(cfg, mode)
         sampler = ImbalancedDatasetSampler(dataset)
     elif mode == "valid":
-        dataset = UBKData(mode)
+        dataset = UBKData(cfg, mode)
     elif mode == "test":
-        dataset = UBKData(mode)
+        dataset = UBKData(cfg, mode)
     else:
         raise ValueError(
             "mode must be one of 'train' or 'valid' or test' "
