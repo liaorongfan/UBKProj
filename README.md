@@ -9,7 +9,7 @@ pip install torchsampler
 ```
 
 ## Data preparation
-Data should be processed first and put aside in `dataset` directory. The raw data and processed data is made available on request only.
+Data should be processed first and put aside in `dataset` directory. The raw data and processed data are made available on request only.
 
 
 ## Usage
