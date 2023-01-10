@@ -134,10 +134,10 @@ class ExpRunner(Constructor):
             self.logger.info(f"test with model {weight_file}")
             self.model = load_model(self.model, weight_file)
 
-        acc_avg = self.trainer.test(
+        acc_avg, uar = self.trainer.test(
             self.data_loader["test"], self.model
         )
-        self.logger.info("acc: {}".format(acc_avg))
+        self.logger.info("acc: {} ; uar: {}".format(acc_avg, uar))
         return
 
     def run(self):

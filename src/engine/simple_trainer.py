@@ -4,6 +4,7 @@ import numpy as np
 from .build import TRAINER_REGISTRY
 from .build import device
 from torch.utils.tensorboard import SummaryWriter
+from sklearn.metrics import balanced_accuracy_score
 import time
 
 
@@ -101,23 +102,26 @@ class SimpleTrainer(Trainer):
         with torch.no_grad():
             acc_epo = []
             label_list = []
-            output_list = []
+            pred_list = []
             for data in tqdm(data_loader):
                 inputs, labels = self.data_fmt(data)
                 outputs = model(*inputs)  # for more then one input data
 
                 outputs = outputs.cpu().detach()
+                pred = outputs.argmax(dim=1)
                 labels = labels.cpu().detach()
-                output_list.append(outputs)
+                pred_list.append(pred)
                 label_list.append(labels)
-                acc_batch = (outputs.argmax(dim=1) == labels).float().mean().item()
+                acc_batch = (pred == labels).float().mean().item()
                 acc_epo.append(acc_batch)
             test_acc = np.array(acc_epo).mean()
-
-        # mse_mean_rand = np.round(mse_mean, 4)
+        total_label = torch.cat(label_list, dim=0).numpy()
+        total_pred = torch.cat(pred_list, dim=0).numpy()
+        uar = balanced_accuracy_score(total_label, total_pred)
         acc_avg_rand = np.round(test_acc.astype("float64"), 4)
+        uar_rand = np.round(uar.astype("float64"), 4)
         # self.tb_writer.add_scalar("test_acc", ocean_acc_avg_rand)
-        return acc_avg_rand  # mse_mean_rand
+        return acc_avg_rand, uar_rand
 
     def data_fmt(self, data):
         for k, v in data.items():
