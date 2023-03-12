@@ -1,4 +1,7 @@
-/dataset
+#/dataset
+#!/dataset/demo/
+/dataset/*
+!/dataset/demo
 /results
 /.idea
 
