@@ -16,6 +16,12 @@ Data should be processed first and put aside in `dataset` directory. The raw dat
 We provide MLP, AlexNet, Vgg16, Resnet18, Transformer, and Swin-transformer models for evaluation, you can conduct experiments and select 
 models by `--config-file` argument shown as below. The corresponding config files are listed in `config` directory.
 
+### Quick start
+```shell
+# run with the demo data in git repo 
+python run.py -c config/alexnet_demo.yaml
+```
+
 ### Training
 ```shell
 # cd path/to/UBKProj
